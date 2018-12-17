@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
 
 class Logger
@@ -16,17 +17,19 @@ public:
     Logger(const Logger&) = delete;
     Logger& operator=(const Logger&) = delete;
 
+	Logger(Logger&&) = delete;
+	Logger& operator=(Logger&&) = delete;
 
     std::string get_folder_abs_path()const;
 
     void error_handler();
 
     template<typename T>
-    friend Logger& operator <<(Logger& r, const T& message)
-    {
-        r.os<<((message == std::string("Logger::endl"))?("\n"):(message));
-        return r;
-    }
+	friend Logger& operator <<(Logger& r, const T& message)
+	{
+		r.os << ((message == std::string("Logger::endl")) ? ("\n") : (message));
+		return r;
+	}
 
     static const std::string endl;
 
@@ -35,8 +38,6 @@ private:
     std::ostream& os;
 
 };
-
-
 
 
 #endif // LOGGER_H
