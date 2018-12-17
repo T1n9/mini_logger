@@ -2,7 +2,7 @@
 
 int main()
 {
-  Logger logger("log");
+  Logger logger;
   logger << "just a example logging file" << logger.endl;
   logger<<logger.endl<<"testing endl";
   
