@@ -32,6 +32,8 @@ public:
 	}
 
     static const std::string endl;
+	static const int MAX_PATH = 200;
+
 
 private:
     std::ofstream file_stream;

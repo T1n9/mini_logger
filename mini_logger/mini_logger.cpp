@@ -1,9 +1,10 @@
 #include "mini_logger.h"
 #include <stdexcept>
 
-#ifdef _WIN32
 
-#elif
+#ifdef _WIN32
+#include  <direct.h>
+#elif UNIX
 #include <unistd.h>
 #endif
 const std::string Logger::endl = "Logger::endl";
@@ -37,8 +38,10 @@ Logger::~Logger()
 std::string Logger::get_folder_abs_path() const
 {	
 	#ifdef _WIN32
-	throw std::exception("not implemented for win");
-	#elif
+	char buffer[MAX_PATH];
+	_getcwd(buffer, MAX_PATH);
+	return std::string(buffer) + "//";
+	#elif UNIX
     std::string exe_path(realpath("/proc/self/exe", NULL));
     return exe_path.substr(0, exe_path.find_last_of("//")+1);
 	#endif
