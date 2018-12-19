@@ -13,7 +13,7 @@ public:
     explicit Logger(const char* );
     explicit Logger(const std::string&);
 
-    virtual ~Logger();
+	virtual ~Logger();
     Logger(const Logger&) = delete;
     Logger& operator=(const Logger&) = delete;
 

@@ -10,7 +10,7 @@
 const std::string Logger::endl = "Logger::endl";
 
 Logger::Logger(std::ostream& os):
-os(os)
+	os(os)
 {}
 
 Logger::Logger(const char * file_path):
@@ -42,8 +42,8 @@ std::string Logger::get_folder_abs_path() const
 	_getcwd(buffer, MAX_PATH);
 	return std::string(buffer) + "//";
 	#elif UNIX
-    std::string exe_path(realpath("/proc/self/exe", NULL));
-    return exe_path.substr(0, exe_path.find_last_of("//")+1);
+	std::string exe_path(realpath("/proc/self/exe", NULL));
+	return exe_path.substr(0, exe_path.find_last_of("//")+1);
 	#endif
 }
 
