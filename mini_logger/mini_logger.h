@@ -17,8 +17,10 @@ public:
     Logger(const Logger&) = delete;
     Logger& operator=(const Logger&) = delete;
 
-	Logger(Logger&&) = delete;
-	Logger& operator=(Logger&&) = delete;
+	//因为定义了拷贝构造函数，即使它是被删除的。
+	//所以编译器不会合成默认的移动构造函数
+	//Logger(Logger&&) = delete;
+	//Logger& operator=(Logger&&) = delete;
 
     std::string get_folder_abs_path()const;
 
